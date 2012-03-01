@@ -1,17 +1,20 @@
 import os, sys, shutil
-import MySQLdb, transmissionrpc
+import transmissionrpc, ConfigParser, io
 from TVShow import TVShow
 
-conn = MySQLdb.connect (host = "localhost", user = "homeadmin", passwd = "way23ne", db = "homeadmin")
-tc = transmissionrpc.Client('localhost', port=9091, user='jeff', password='way23ne')
+cf = ConfigParser.ConfigParser()
+cf.readfp(open('ssconfig.cfg'))
 
-if(len(sys.argv) == 1):
-  sDir = "/mnt/Media/TV/"
+#test for MySQL usage
+if(cf.has_section('mysqldb'):
+  import MySQLdb
+  conn=MySQLdb.connect(host=cf.get('mysqldb','host'),user=cf.get('mysqldb','dbuser'),passwd=cf.get('mysqldb','dbpass'),db=cf.get('mysqldb','dbname'))
 else:
-  if(sys.argv[1][-1] != "/"):
-    sDir = sys.argv[1] + "/"
-  else:
-    sDir = sys.argv[1]
+  conn=false
+#creates transmission connection
+tc = transmissionrpc.Client(cf.get('trans','host'),port=cf.get('trans','port'),user=cf.get('trans','user'),password=cf.get('trans','pass'))
+#gets directory to look in
+sDir=cf.get('showscrub','lookin')
 
 #checks to see if dir exists
 def check_fordir(s,x):
