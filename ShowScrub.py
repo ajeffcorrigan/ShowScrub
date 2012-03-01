@@ -6,7 +6,7 @@ cf = ConfigParser.ConfigParser()
 cf.readfp(open('ssconfig.cfg'))
 
 #test for MySQL usage
-if(cf.has_section('mysqldb'):
+if(cf.has_section('mysqldb')):
   import MySQLdb
   conn=MySQLdb.connect(host=cf.get('mysqldb','host'),user=cf.get('mysqldb','dbuser'),passwd=cf.get('mysqldb','dbpass'),db=cf.get('mysqldb','dbname'))
 else:
