@@ -1,0 +1,6 @@
+This script is used to parse downloaded show names based on S01E01 format commonly used. It will then create a sub
+directory with show name in standard formatting "Show Name - Season xx". That way all the shows are grouped by seasons.
+This script will also create a MySQL entry for the show to use on a website, in my case my person site gives me a quick
+view of what shows have been downloaded. 
+
+Overall this script was used to get use to Python programming language.
