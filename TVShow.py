@@ -17,7 +17,7 @@ class TVShow:
   def parse_show(self,fn=""):
     if(fn != ""):
       self.filename = fn
-    rp = re.compile('S[0-9]{2}E[0-9]{2}')
+    rp = re.compile('[Ss][0-9]{2}[Ee][0-9]{2}')
     rSE = rp.search(self.filename)
     if(rSE == None):
       return
