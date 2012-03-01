@@ -41,7 +41,7 @@ for tort in tc.get_files():
 
 #main program
 for filename in os.listdir(sDir):
-  if(filename[-3:] == "avi"):
+  if(filename[-3:] in cf.get('showscrub','filetypes')):
     show = TVShow(filename,sDir,os.path.getmtime(sDir + filename))
     if(show.parse_show()):
       if(not check_fordir(show.showname,show.season)):
