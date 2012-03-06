@@ -3,7 +3,7 @@ import transmissionrpc, ConfigParser, io
 from TVShow import TVShow
 
 cf = ConfigParser.ConfigParser()
-cf.readfp(open('ssconfig.cfg'))
+cf.readfp(open(sys.path[0]+'ssconfig.cfg'))
 
 #test for MySQL usage
 if(cf.has_section('mysqldb')):
